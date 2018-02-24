@@ -1,0 +1,26 @@
+{
+  "name": "dead-simple-react-typescript-starter",
+  "version": "1.0.0",
+  "description": "A dead simple react typescript starter kit",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/webpack"
+  },
+  "engines": {
+    "node": ">=v8.9.0"
+  },
+  "author": "mitsuru.ogawa.jp@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.0.38",
+    "@types/react-dom": "^16.0.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.4.1",
+    "source-map-loader": "^0.2.3",
+    "typescript": "^2.7.2",
+    "webpack": "^3.11.0"
+  }
+}
