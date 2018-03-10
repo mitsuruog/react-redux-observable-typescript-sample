@@ -3234,7 +3234,7 @@ exports.mapReadyAction = typesafe_actions_1.createAction(constants_1.MAP_READY, 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(4);
 var ReactDOM = __webpack_require__(50);
@@ -3247,8 +3247,7 @@ var App_connect_1 = __webpack_require__(107);
  */
 var reducers_1 = __webpack_require__(119);
 var epics_1 = __webpack_require__(123);
-var composeEnhancers = (process.env.NODE_ENV === "development" &&
-    window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || redux_1.compose;
+var composeEnhancers = (window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || redux_1.compose;
 function configureStore(initialState) {
     // configure middlewares
     var middlewares = [
@@ -3263,7 +3262,6 @@ var store = configureStore();
 ReactDOM.render(React.createElement(react_redux_1.Provider, { store: store },
     React.createElement(App_connect_1.default, null)), document.getElementById("root"));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 50 */
