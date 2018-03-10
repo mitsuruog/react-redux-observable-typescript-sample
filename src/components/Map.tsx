@@ -20,7 +20,8 @@ export default class Map extends React.Component<MapProps, MapState> {
   }
 
   public componentWillMount() {
-    scriptjs(`https://maps.googleapis.com/maps/api/js`, this.onLoaded);
+    // remove this key when you run it on your localhost.
+    scriptjs(`https://maps.googleapis.com/maps/api/js?key=AIzaSyB5o5wtvz2sf_ckQm9rciFuJxc4pp2Sx-o`, this.onLoaded);
   }
 
   public render() {
