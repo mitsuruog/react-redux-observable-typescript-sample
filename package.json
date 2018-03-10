@@ -12,13 +12,24 @@
   "author": "mitsuru.ogawa.jp@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "@types/googlemaps": "^3.30.7",
     "@types/react": "^16.0.38",
     "@types/react-dom": "^16.0.4",
+    "@types/react-redux": "^5.0.15",
+    "@types/redux": "^3.6.0",
+    "@types/scriptjs": "0.0.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-observable": "^0.18.0",
+    "rxjs": "^5.5.6",
+    "scriptjs": "^2.5.8",
+    "typesafe-actions": "^1.1.2"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.4.1",
+    "redux-devtools": "^3.4.1",
     "source-map-loader": "^0.2.3",
     "typescript": "^2.7.2",
     "webpack": "^3.11.0"
