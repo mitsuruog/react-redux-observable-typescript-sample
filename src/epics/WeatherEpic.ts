@@ -18,10 +18,10 @@ import { getWeather } from "../shared/services/Api";
 
 const weatherGetEpic: Epic<Action, RootState> = (action$, state) =>
   action$.ofType(WEATHER_GET)
-    .mergeMap((action: WeatherAction) =>
-      getWeather(action.params.lat, action.params.lng)
-        .map(payload => weatherSetAction(payload))
-    );
+    .mergeMap(async (action: WeatherAction) => {
+      const weather = await getWeather(action.params.lat, action.params.lng);
+      return weatherSetAction(weather);
+    });
 
 export default [
   weatherGetEpic,
