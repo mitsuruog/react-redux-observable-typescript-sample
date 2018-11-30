@@ -4,6 +4,9 @@ A sample application for React + redux-observable + TypeScript
 
 ![image](./images/image01.png)
 
+> 👴 Old branch to see the version for redux-observable 0.18.
+> - https://github.com/mitsuruog/react-redux-observable-typescript-sample/tree/0.18
+
 ## Demo
 
 - https://mitsuruog.github.io/react-redux-observable-typescript-sample
