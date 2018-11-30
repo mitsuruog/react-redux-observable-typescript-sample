@@ -28,6 +28,7 @@
     "typesafe-actions": "^2.0.4"
   },
   "devDependencies": {
+    "atob": "^2.1.2",
     "awesome-typescript-loader": "^5.2.1",
     "source-map-loader": "^0.2.4",
     "typescript": "^3.2.1",
