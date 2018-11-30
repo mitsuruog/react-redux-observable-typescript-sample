@@ -1,8 +1,14 @@
-import { connect } from "react-redux";
+import { ActionType } from 'typesafe-actions';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+
+import * as actions from "../actions";
 
 import { RootState } from "../reducers";
 
-import App, { AppProps } from "./App";
+import App from "./App";
+
+type Action = ActionType<typeof actions>;
 
 interface OwnProps {
 }
@@ -11,10 +17,7 @@ const mapStateToProps = (state: RootState) => ({
   loading: !state.map.ready,
 });
 
-const mapDispatchToProps = (dispatch: Function, props: OwnProps) => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps) => ({
 });
 
-export default connect<{}, {}, AppProps>(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App) as React.ComponentClass<OwnProps>
+export default connect(mapStateToProps, mapDispatchToProps)(App);

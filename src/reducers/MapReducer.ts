@@ -1,13 +1,11 @@
-import {
-  MAP_READY,
-} from "../constants";
+import { ActionType, getType } from 'typesafe-actions';
 
-import {
-  Action,
-} from "../actions";
+import * as actions from "../actions";
+
+type Action = ActionType<typeof actions>;
 
 export interface MapState {
-  ready: boolean;
+  readonly ready: boolean;
 }
 
 const initialState = {
@@ -18,7 +16,7 @@ export const mapReducer = (state: MapState = initialState, action: Action): MapS
 
   switch (action.type) {
 
-    case MAP_READY:
+    case getType(actions.mapReadyAction):
       return Object.assign({}, state, { ready: true });
 
     default:

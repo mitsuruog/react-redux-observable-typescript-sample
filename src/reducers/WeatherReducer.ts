@@ -1,16 +1,14 @@
+import { ActionType, getType } from 'typesafe-actions';
+
+import * as actions from "../actions";
+
+type Action = ActionType<typeof actions>;
+
 import Weather from "../shared/models/Weather";
 
-import {
-  WEATHER_SET,
-} from "../constants";
-
-import {
-  Action,
-} from "../actions";
-
 export interface WeatherState {
-  loading: boolean;
-  weather?: Weather;
+  readonly loading: boolean;
+  readonly weather?: Weather;
 }
 
 const initialState = {
@@ -21,8 +19,12 @@ export const weatherReducer = (state: WeatherState = initialState, action: Actio
 
   switch (action.type) {
 
-    case WEATHER_SET:
+    case getType(actions.weatherSetAction):
       return Object.assign({}, state, { weather: new Weather(action.payload) });
+
+    case getType(actions.weatherErrorAction):
+      console.error(action.payload.message);
+      return state;
 
     default:
       return state;

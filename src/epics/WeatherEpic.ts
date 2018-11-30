@@ -1,27 +1,26 @@
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/mergeMap";
 import { Epic } from "redux-observable";
+import { from, of } from 'rxjs';
+import { switchMap, filter, map, catchError, mergeMap } from 'rxjs/operators';
+import { ActionType, isOfType, getType } from 'typesafe-actions';
+
+import * as actions from "../actions";
+
+type Action = ActionType<typeof actions>;
 
 import { RootState } from "../reducers";
 
-import {
-  Action,
-  WeatherAction,
-  weatherSetAction,
-} from "../actions";
-
-import {
-  WEATHER_GET,
-} from "../constants";
-
 import { getWeather } from "../shared/services/Api";
 
-const weatherGetEpic: Epic<Action, RootState> = (action$, state) =>
-  action$.ofType(WEATHER_GET)
-    .mergeMap((action: WeatherAction) =>
-      getWeather(action.params.lat, action.params.lng)
-        .map(payload => weatherSetAction(payload))
-    );
+const weatherGetEpic: Epic<Action, Action, RootState> = (action$, store) =>
+  action$.pipe(
+    filter(isOfType(getType(actions.weatherGetAction))),
+    switchMap(action =>
+      from(getWeather(action.payload.lat, action.payload.lng)).pipe(
+        map(actions.weatherSetAction),
+        catchError(error => of(actions.weatherErrorAction(error)))
+      ),
+    )
+  );
 
 export default [
   weatherGetEpic,

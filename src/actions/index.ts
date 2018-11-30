@@ -4,31 +4,15 @@ import {
   WEATHER_GET,
   WEATHER_SET,
   MAP_READY,
+  WEATHER_ERROR,
 } from "../constants";
 
-export interface Action {
-  type: string;
-  payload?: {};
-  params?: {};
-}
+import Weather from "../shared/models/Weather";
 
-export interface WeatherAction extends Action {
-  params: {
-    lat: number;
-    lng: number;
-  };
-}
+export const weatherGetAction = createAction(WEATHER_GET, resolve => (lat: number, lng: number) => resolve({ lat, lng }));
 
-export const weatherGetAction = createAction(WEATHER_GET, (params = {}) => ({
-  type: WEATHER_GET,
-  params,
-}));
+export const weatherSetAction = createAction(WEATHER_SET, resolve => (weather: Response) => resolve(weather));
 
-export const weatherSetAction = createAction(WEATHER_SET, (payload = {}) => ({
-  type: WEATHER_SET,
-  payload,
-}));
+export const weatherErrorAction = createAction(WEATHER_ERROR, resolve => (error: Error) => resolve(error));
 
-export const mapReadyAction = createAction(MAP_READY, () => ({
-  type: MAP_READY
-}));
+export const mapReadyAction = createAction(MAP_READY);

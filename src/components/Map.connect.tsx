@@ -1,21 +1,23 @@
-import { connect } from "react-redux";
+import { ActionType } from 'typesafe-actions';
+import { Dispatch, bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import { weatherGetAction, mapReadyAction } from "../actions"
-import { RootState } from "../reducers"
+import * as actions from "../actions";
 
-import Map, { MapProps } from "./Map";
+import { RootState } from "../reducers";
+
+type Action = ActionType<typeof actions>;
+
+import Map from "./Map";
 
 interface OwnProps {
 }
 
 const mapStateToProps = (state: RootState) => ({});
 
-const mapDispatchToProps = (dispatch: Function, props: OwnProps) => ({
-  getWeather: (payload: {}) => dispatch(weatherGetAction(payload)),
-  mapReady: () => dispatch(mapReadyAction()),
-});
+const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps) => bindActionCreators({
+  getWeather: (lat: number, lng: number) => actions.weatherGetAction(lat, lng),
+  mapReady: () => actions.mapReadyAction(),
+}, dispatch);
 
-export default connect<{}, {}, MapProps>(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Map) as React.ComponentClass<OwnProps>
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

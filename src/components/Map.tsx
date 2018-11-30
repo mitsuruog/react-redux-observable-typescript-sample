@@ -2,7 +2,7 @@ import * as React from "react";
 import * as scriptjs from "scriptjs";
 
 export interface MapProps {
-  getWeather: Function;
+  getWeather: (lat: number, lng: number) => undefined;
   mapReady: Function;
 }
 
@@ -45,10 +45,10 @@ export default class Map extends React.Component<MapProps, MapState> {
     });
 
     this.map.addListener("click", (event) => {
-      this.props.getWeather({
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-      });
+      this.props.getWeather(
+        event.latLng.lat(),
+        event.latLng.lng(),
+      );
     });
 
     this.props.mapReady();
