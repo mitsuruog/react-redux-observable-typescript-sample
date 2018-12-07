@@ -4,7 +4,8 @@
   "description": "A dead simple react typescript starter kit",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack"
+    "build": "./node_modules/.bin/webpack",
+    "start": "./node_modules/.bin/webpack-dev-server --port 9000 --open --hot --inline"
   },
   "engines": {
     "node": ">=v8.9.0"
@@ -13,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/googlemaps": "^3.30.16",
-    "@types/react": "^16.7.9",
+    "@types/react": "^16.7.13",
     "@types/react-dom": "^16.0.11",
     "@types/react-redux": "^6.0.10",
     "@types/redux": "^3.6.31",
@@ -28,11 +29,11 @@
     "typesafe-actions": "^2.0.4"
   },
   "devDependencies": {
-    "atob": "^2.1.2",
     "awesome-typescript-loader": "^5.2.1",
     "source-map-loader": "^0.2.4",
     "typescript": "^3.2.1",
-    "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   }
 }
