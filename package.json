@@ -26,7 +26,7 @@
     "redux-observable": "^1.0.0",
     "rxjs": "^6.3.3",
     "scriptjs": "^2.5.9",
-    "typesafe-actions": "^2.0.4"
+    "typesafe-actions": "^3.0.0"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
