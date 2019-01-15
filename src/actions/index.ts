@@ -7,8 +7,6 @@ import {
   WEATHER_ERROR,
 } from "../constants";
 
-import Weather from "../shared/models/Weather";
-
 export const weatherGetAction = createAction(WEATHER_GET, resolve => (lat: number, lng: number) => resolve({ lat, lng }));
 
 export const weatherSetAction = createAction(WEATHER_SET, resolve => (weather: Response) => resolve(weather));
