@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as scriptjs from "scriptjs";
 
 export interface MapProps {
   getWeather: (lat: number, lng: number) => void;
@@ -21,7 +20,11 @@ export default class Map extends React.Component<MapProps, MapState> {
 
   public componentWillMount() {
     // remove this key when you run it on your localhost.
-    scriptjs(`https://maps.googleapis.com/maps/api/js?key=AIzaSyB5o5wtvz2sf_ckQm9rciFuJxc4pp2Sx-o`, this.onLoaded);
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB5o5wtvz2sf_ckQm9rciFuJxc4pp2Sx-o';
+    script.async = true;
+    script.onloadend = this.onLoaded;
   }
 
   public render() {
