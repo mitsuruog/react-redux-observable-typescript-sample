@@ -17,6 +17,8 @@ module.exports = {
 
   module: {
     rules: [
+      { enforce: "pre", test: /\.tsx?$/, exclude: /node_modules/, loader: "eslint-loader", options: { fix: true } },
+
       // All files with a ".ts" or ".tsx" extension will be handled by "awesome-typescript-loader".
       { test: /\.tsx?$/, loader: "ts-loader" },
 

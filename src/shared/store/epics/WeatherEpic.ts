@@ -1,7 +1,7 @@
 import { Epic } from "redux-observable";
-import { from, of } from 'rxjs';
-import { switchMap, filter, map, catchError } from 'rxjs/operators';
-import { ActionType, isActionOf } from 'typesafe-actions';
+import { from, of } from "rxjs";
+import { switchMap, filter, map, catchError } from "rxjs/operators";
+import { ActionType, isActionOf } from "typesafe-actions";
 
 import * as actions from "../actions";
 

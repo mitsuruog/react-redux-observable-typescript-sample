@@ -1,5 +1,5 @@
-import { Dispatch, bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { Dispatch, bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 import { ActionsType, RootStateType, actions } from "../shared/store";
 

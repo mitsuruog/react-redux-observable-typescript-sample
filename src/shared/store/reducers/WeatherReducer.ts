@@ -1,4 +1,4 @@
-import { ActionType, getType } from 'typesafe-actions';
+import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../actions";
 

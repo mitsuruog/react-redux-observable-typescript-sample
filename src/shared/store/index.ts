@@ -1,10 +1,10 @@
-import { applyMiddleware, compose, createStore } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
-import { ActionType } from 'typesafe-actions';
+import { applyMiddleware, compose, createStore } from "redux";
+import { createEpicMiddleware } from "redux-observable";
+import { ActionType } from "typesafe-actions";
 
-import * as actions from './actions';
-import epics from './epics';
-import reducers, { RootState } from './reducers';
+import * as actions from "./actions";
+import epics from "./epics";
+import reducers, { RootState } from "./reducers";
 
 export type RootStateType = RootState;
 export type ActionsType = ActionType<typeof actions>;
