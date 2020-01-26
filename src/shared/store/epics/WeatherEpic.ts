@@ -1,7 +1,7 @@
 import { Epic } from "redux-observable";
-import { from, of } from 'rxjs';
-import { switchMap, filter, map, catchError } from 'rxjs/operators';
-import { ActionType, isActionOf } from 'typesafe-actions';
+import { from, of } from "rxjs";
+import { switchMap, filter, map, catchError } from "rxjs/operators";
+import { ActionType, isActionOf } from "typesafe-actions";
 
 import * as actions from "../actions";
 
@@ -9,7 +9,7 @@ type Action = ActionType<typeof actions>;
 
 import { RootState } from "../reducers";
 
-import { getWeather } from "../shared/services/Api";
+import { getWeather } from "../../services/Api";
 
 const weatherGetEpic: Epic<Action, Action, RootState> = (action$, store) =>
   action$.pipe(

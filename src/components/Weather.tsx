@@ -26,5 +26,5 @@ export const Weather: React.SFC<WeatherProps> = ({ weather }) => {
         </dd>
       </dl>
     </div>
-  )
+  );
 };
