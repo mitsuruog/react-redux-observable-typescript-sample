@@ -2,8 +2,8 @@ import * as React from "react";
 import * as scriptjs from "scriptjs";
 
 export interface MapProps {
-  getWeather: (lat: number, lng: number) => undefined;
-  mapReady: Function;
+  getWeather: (lat: number, lng: number) => void;
+  mapReady: () => void;
 }
 
 interface MapState {
