@@ -1,5 +1,11 @@
 import * as React from "react";
 
+declare global {
+  interface Window {
+    initMap: Function;
+  }
+}
+
 export interface MapProps {
   getWeather: (lat: number, lng: number) => void;
   mapReady: () => void;
@@ -22,9 +28,10 @@ export default class Map extends React.Component<MapProps, MapState> {
     // remove this key when you run it on your localhost.
     const script = document.createElement("script");
     script.type = "text/javascript";
-    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB5o5wtvz2sf_ckQm9rciFuJxc4pp2Sx-o";
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB5o5wtvz2sf_ckQm9rciFuJxc4pp2Sx-o&callback=initMap";
     script.async = true;
-    script.onloadend = this.onLoaded;
+    document.body.appendChild(script);
+    window.initMap = this.onLoaded;
   }
 
   public render() {

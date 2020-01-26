@@ -48458,9 +48458,10 @@ var Map = /** @class */ (function (_super) {
         // remove this key when you run it on your localhost.
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB5o5wtvz2sf_ckQm9rciFuJxc4pp2Sx-o";
+        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB5o5wtvz2sf_ckQm9rciFuJxc4pp2Sx-o&callback=initMap";
         script.async = true;
-        script.onloadend = this.onLoaded;
+        document.body.appendChild(script);
+        window.initMap = this.onLoaded;
     };
     Map.prototype.render = function () {
         return (React.createElement("div", { id: "map" }));
