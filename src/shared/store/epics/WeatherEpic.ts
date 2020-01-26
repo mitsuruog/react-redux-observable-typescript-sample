@@ -9,7 +9,7 @@ type Action = ActionType<typeof actions>;
 
 import { RootState } from "../reducers";
 
-import { getWeather } from "../shared/services/Api";
+import { getWeather } from "../../services/Api";
 
 const weatherGetEpic: Epic<Action, Action, RootState> = (action$, store) =>
   action$.pipe(

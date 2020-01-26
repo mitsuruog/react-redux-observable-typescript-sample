@@ -4,7 +4,7 @@ import * as actions from "../actions";
 
 type Action = ActionType<typeof actions>;
 
-import Weather from "../shared/models/Weather";
+import Weather from "../../models/Weather";
 
 export interface WeatherState {
   readonly loading: boolean;

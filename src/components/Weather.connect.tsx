@@ -1,22 +1,17 @@
-import { ActionType } from 'typesafe-actions';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actions from "../actions";
+import { ActionsType, RootStateType } from "../shared/store";
 
-import { RootState } from "../reducers";
-
-type Action = ActionType<typeof actions>;
-
-import { Weather, WeatherProps } from "./Weather";
+import { Weather } from "./Weather";
 
 interface OwnProps {
 }
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = (state: RootStateType) => ({
   weather: state.weather.weather,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps) => ({});
+const mapDispatchToProps = (dispatch: Dispatch<ActionsType>, props: OwnProps) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Weather);
