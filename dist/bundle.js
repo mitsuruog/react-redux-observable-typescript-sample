@@ -48671,7 +48671,7 @@ var typesafe_actions_1 = __webpack_require__(/*! typesafe-actions */ "./node_mod
 var actions = __webpack_require__(/*! ../actions */ "./src/shared/store/actions/index.ts");
 var Api_1 = __webpack_require__(/*! ../../services/Api */ "./src/shared/services/Api.ts");
 var weatherGetEpic = function (action$, store) {
-    return action$.pipe(operators_1.filter(typesafe_actions_1.isActionOf(actions.weatherGetAction)), operators_1.switchMap(function (action) {
+    return action$.pipe(operators_1.filter(typesafe_actions_1.isActionOf(actions.weatherGetAction)), operators_1.exhaustMap(function (action) {
         return rxjs_1.from(Api_1.getWeather(action.payload.lat, action.payload.lng)).pipe(operators_1.map(actions.weatherSetAction), operators_1.catchError(function (error) { return rxjs_1.of(actions.weatherErrorAction(error)); }));
     }));
 };

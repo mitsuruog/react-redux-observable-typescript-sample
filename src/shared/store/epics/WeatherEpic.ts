@@ -1,6 +1,6 @@
 import { Epic } from "redux-observable";
 import { from, of } from "rxjs";
-import { switchMap, filter, map, catchError } from "rxjs/operators";
+import { exhaustMap, filter, map, catchError } from "rxjs/operators";
 import { ActionType, isActionOf } from "typesafe-actions";
 
 import * as actions from "../actions";
@@ -14,7 +14,7 @@ import { getWeather } from "../../services/Api";
 const weatherGetEpic: Epic<Action, Action, RootState> = (action$, store) =>
   action$.pipe(
     filter(isActionOf(actions.weatherGetAction)),
-    switchMap(action =>
+    exhaustMap(action =>
       from(getWeather(action.payload.lat, action.payload.lng)).pipe(
         map(actions.weatherSetAction),
         catchError(error => of(actions.weatherErrorAction(error)))
