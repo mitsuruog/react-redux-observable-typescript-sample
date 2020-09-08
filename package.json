@@ -1,41 +1,36 @@
 {
-  "name": "dead-simple-react-typescript-starter",
-  "version": "1.0.0",
-  "description": "A dead simple react typescript starter kit",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "start": "./node_modules/.bin/webpack-dev-server --port 9000 --open --hot --inline"
   },
   "engines": {
-    "node": ">=10.15.3"
+    "node": ">=12.16.3"
   },
-  "author": "mitsuru.ogawa.jp@gmail.com",
-  "license": "MIT",
   "dependencies": {
-    "@types/googlemaps": "3.39.2",
-    "@types/react": "16.9.19",
-    "@types/react-dom": "16.9.5",
-    "@types/react-redux": "7.1.7",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
-    "react-redux": "7.1.3",
+    "@types/googlemaps": "3.39.13",
+    "@types/react": "16.9.49",
+    "@types/react-dom": "16.9.8",
+    "@types/react-redux": "7.1.9",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-redux": "7.2.1",
     "redux": "4.0.5",
     "redux-observable": "1.2.0",
-    "rxjs": "6.5.4",
+    "rxjs": "6.6.3",
     "typesafe-actions": "4.4.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "2.17.0",
-    "@typescript-eslint/parser": "2.17.0",
-    "eslint": "6.8.0",
-    "eslint-loader": "3.0.3",
-    "eslint-plugin-react": "7.18.0",
-    "source-map-loader": "0.2.4",
-    "ts-loader": "6.2.1",
-    "typescript": "3.7.5",
-    "webpack": "4.41.5",
-    "webpack-cli": "3.3.10",
-    "webpack-dev-server": "3.10.1"
+    "@typescript-eslint/eslint-plugin": "4.1.0",
+    "@typescript-eslint/parser": "4.1.0",
+    "eslint": "7.8.1",
+    "eslint-loader": "4.0.2",
+    "eslint-plugin-react": "7.20.6",
+    "source-map-loader": "1.1.0",
+    "ts-loader": "8.0.3",
+    "typescript": "3.9.7",
+    "webpack": "4.44.1",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
   }
 }
