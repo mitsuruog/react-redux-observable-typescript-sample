@@ -1,16 +1,15 @@
 import * as React from "react";
-import WeatherModel from "../shared/models/Weather";
+import { useSelector } from "react-redux";
 
-export interface WeatherProps {
-  weather?: WeatherModel;
-}
+import { RootState } from "../shared/store/reducers";
 
-export const Weather: React.SFC<WeatherProps> = ({ weather }) => {
+export interface WeatherProps {}
 
+export const Weather: React.SFC<WeatherProps> = () => {
+  const { weather } = useSelector((state: RootState) => state.weather);
   if (!weather) {
     return null;
   }
-
   return (
     <div className="weather">
       <h2>{weather.name}</h2>

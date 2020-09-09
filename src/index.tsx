@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-import App from "./components/App.connect";
+import { App } from "./components/App";
 
 /**
  * Redux store setup
