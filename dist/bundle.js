@@ -45135,27 +45135,6 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
-/***/ "./src/components/App.connect.tsx":
-/*!****************************************!*\
-  !*** ./src/components/App.connect.tsx ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-var App_1 = __webpack_require__(/*! ./App */ "./src/components/App.tsx");
-var mapStateToProps = function (state) { return ({
-    loading: !state.map.ready,
-}); };
-var mapDispatchToProps = function (dispatch, props) { return ({}); };
-exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(App_1.default);
-
-
-/***/ }),
-
 /***/ "./src/components/App.tsx":
 /*!********************************!*\
   !*** ./src/components/App.tsx ***!
@@ -45165,66 +45144,24 @@ exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(App
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.App = void 0;
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var Map_connect_1 = __webpack_require__(/*! ./Map.connect */ "./src/components/Map.connect.tsx");
-var Weather_connect_1 = __webpack_require__(/*! ./Weather.connect */ "./src/components/Weather.connect.tsx");
-var App = /** @class */ (function (_super) {
-    __extends(App, _super);
-    function App() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    App.prototype.render = function () {
-        return (React.createElement("div", { className: "app" },
-            this.props.loading && React.createElement("div", { className: "loading" }),
-            React.createElement("div", { className: "header" },
-                React.createElement("h1", null, "Weather Map"),
-                React.createElement("small", null, "(This sample application = React + redux-observable + TypeScript)")),
-            React.createElement("div", { className: "main" },
-                React.createElement(Weather_connect_1.default, null),
-                React.createElement(Map_connect_1.default, null)),
-            React.createElement("div", { className: "footer" }, "(c) 2018 mitsuru ogawa")));
-    };
-    return App;
-}(React.Component));
-exports.default = App;
-
-
-/***/ }),
-
-/***/ "./src/components/Map.connect.tsx":
-/*!****************************************!*\
-  !*** ./src/components/Map.connect.tsx ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var redux_1 = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-var store_1 = __webpack_require__(/*! ../shared/store */ "./src/shared/store/index.ts");
 var Map_1 = __webpack_require__(/*! ./Map */ "./src/components/Map.tsx");
-var mapStateToProps = function (state) { return ({}); };
-var mapDispatchToProps = function (dispatch, props) { return redux_1.bindActionCreators({
-    getWeather: function (lat, lng) { return store_1.actions.weatherGetAction(lat, lng); },
-    mapReady: function () { return store_1.actions.mapReadyAction(); },
-}, dispatch); };
-exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Map_1.default);
+var Weather_1 = __webpack_require__(/*! ./Weather */ "./src/components/Weather.tsx");
+exports.App = function () {
+    var ready = react_redux_1.useSelector(function (state) { return state.map; }).ready;
+    return (React.createElement("div", { className: "app" },
+        !ready && React.createElement("div", { className: "loading" }),
+        React.createElement("div", { className: "header" },
+            React.createElement("h1", null, "Weather Map"),
+            React.createElement("small", null, "(This sample application = React + redux-observable + TypeScript)")),
+        React.createElement("div", { className: "main" },
+            React.createElement(Weather_1.Weather, null),
+            React.createElement(Map_1.Map, null)),
+        React.createElement("div", { className: "footer" }, "(c) 2020 mitsuru ogawa")));
+};
 
 
 /***/ }),
@@ -45238,83 +45175,47 @@ exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Map
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Map = void 0;
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var Map = /** @class */ (function (_super) {
-    __extends(Map, _super);
-    function Map(props) {
-        var _this = _super.call(this, props) || this;
-        _this.onLoaded = _this.onLoaded.bind(_this);
-        return _this;
-    }
-    Map.prototype.componentDidMount = function () {
-        // remove this key when you run it on your localhost.
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyB5o5wtvz2sf_ckQm9rciFuJxc4pp2Sx-o&callback=initMap";
-        script.async = true;
-        document.body.appendChild(script);
-        window.initMap = this.onLoaded;
-    };
-    Map.prototype.render = function () {
-        return (React.createElement("div", { id: "map" }));
-    };
-    Map.prototype.onLoaded = function () {
-        var _this = this;
-        this.map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: 35.6811673, lng: 139.7648629 },
-            zoom: 8,
-            mapTypeControl: false,
-            disableDoubleClickZoom: false,
-            fullscreenControl: false,
-            keyboardShortcuts: false,
-            streetViewControl: false,
-            scaleControl: false,
-            rotateControl: false,
-            panControl: false,
-        });
-        this.map.addListener("click", function (event) {
-            _this.props.getWeather(event.latLng.lat(), event.latLng.lng());
-        });
-        this.props.mapReady();
-    };
-    return Map;
-}(React.Component));
-exports.default = Map;
-
-
-/***/ }),
-
-/***/ "./src/components/Weather.connect.tsx":
-/*!********************************************!*\
-  !*** ./src/components/Weather.connect.tsx ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-var Weather_1 = __webpack_require__(/*! ./Weather */ "./src/components/Weather.tsx");
-var mapStateToProps = function (state) { return ({
-    weather: state.weather.weather,
-}); };
-var mapDispatchToProps = function (dispatch, props) { return ({}); };
-exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Weather_1.Weather);
+var store_1 = __webpack_require__(/*! ../shared/store */ "./src/shared/store/index.ts");
+exports.Map = function () {
+    var dispatch = react_redux_1.useDispatch();
+    var mapReady = React.useCallback(function () { return dispatch(store_1.actions.mapReadyAction()); }, [dispatch]);
+    var getWeather = React.useCallback(function (lat, lng) { return dispatch(store_1.actions.weatherGetAction(lat, lng)); }, [dispatch]);
+    var mapRef = React.useCallback(function (node) {
+        if (node !== null) {
+            var onLoaded = function () {
+                var map = new google.maps.Map(node, {
+                    center: { lat: 35.6811673, lng: 139.7648629 },
+                    zoom: 8,
+                    mapTypeControl: false,
+                    disableDoubleClickZoom: false,
+                    fullscreenControl: false,
+                    keyboardShortcuts: false,
+                    streetViewControl: false,
+                    scaleControl: false,
+                    rotateControl: false,
+                    panControl: false,
+                });
+                map.addListener("click", function (e) {
+                    getWeather(e.latLng.lat(), e.latLng.lng());
+                });
+                mapReady();
+            };
+            // remove this key when you run it on your localhost.
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src =
+                "https://maps.googleapis.com/maps/api/js?key=AIzaSyB5o5wtvz2sf_ckQm9rciFuJxc4pp2Sx-o&callback=initMap";
+            script.async = true;
+            document.body.appendChild(script);
+            window.initMap = onLoaded;
+        }
+    }, []);
+    return React.createElement("div", { id: "map", ref: mapRef });
+};
 
 
 /***/ }),
@@ -45331,8 +45232,9 @@ exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Wea
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Weather = void 0;
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-exports.Weather = function (_a) {
-    var weather = _a.weather;
+var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+exports.Weather = function () {
+    var weather = react_redux_1.useSelector(function (state) { return state.weather; }).weather;
     if (!weather) {
         return null;
     }
@@ -45370,13 +45272,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-var App_connect_1 = __webpack_require__(/*! ./components/App.connect */ "./src/components/App.connect.tsx");
+var App_1 = __webpack_require__(/*! ./components/App */ "./src/components/App.tsx");
 /**
  * Redux store setup
  */
 var store_1 = __webpack_require__(/*! ./shared/store */ "./src/shared/store/index.ts");
 ReactDOM.render(React.createElement(react_redux_1.Provider, { store: store_1.store },
-    React.createElement(App_connect_1.default, null)), document.getElementById("root"));
+    React.createElement(App_1.App, null)), document.getElementById("root"));
 
 
 /***/ }),
