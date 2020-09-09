@@ -45200,8 +45200,8 @@ exports.Map = function () {
             });
             map.addListener("click", function (e) {
                 getWeather(e.latLng.lat(), e.latLng.lng());
-                mapReady();
             });
+            mapReady();
         }
     }, []);
     return React.createElement("div", { id: "map", ref: mapRef });

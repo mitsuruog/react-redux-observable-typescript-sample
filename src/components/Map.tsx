@@ -33,8 +33,8 @@ export const Map: React.SFC<MapProps> = () => {
       });
       map.addListener("click", e => {
         getWeather(e.latLng.lat(), e.latLng.lng());
-        mapReady();
       });
+      mapReady();
     }
   }, []);
   return <div id="map" ref={mapRef} />;
