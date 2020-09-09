@@ -1,32 +1,22 @@
-import { ActionType, getType } from "typesafe-actions";
+import { createReducer } from "typesafe-actions";
 
-import * as actions from "../actions";
-
-type Action = ActionType<typeof actions>;
-
+import { actions, ActionsType } from "..";
 import Weather from "../../models/Weather";
 
 export interface WeatherState {
-  readonly loading: boolean;
-  readonly weather?: Weather;
+  weather?: Weather;
 }
 
-const initialState = {
-  loading: false,
-};
+export const initialState = {};
 
-export const weatherReducer = (state: WeatherState = initialState, action: Action): WeatherState => {
-
-  switch (action.type) {
-
-    case getType(actions.weatherSetAction):
-      return Object.assign({}, state, { weather: new Weather(action.payload) });
-
-    case getType(actions.weatherErrorAction):
-      console.error(action.payload.message);
-      return state;
-
-    default:
-      return state;
-  }
-};
+export const weatherReducer = createReducer<WeatherState, ActionsType>(
+  initialState
+)
+  .handleAction(actions.weatherSetAction, (state, action) => ({
+    ...state,
+    weather: new Weather(action.payload),
+  }))
+  .handleAction(actions.weatherErrorAction, (state, action) => {
+    console.error(action.payload);
+    return state;
+  });
