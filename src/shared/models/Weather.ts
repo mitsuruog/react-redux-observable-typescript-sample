@@ -1,8 +1,7 @@
 export default class Weather {
-
   public coord: {
     lon: number;
-    lat: number
+    lat: number;
   };
   public weather: Array<{
     id: number;
